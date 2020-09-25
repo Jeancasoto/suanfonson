@@ -17,7 +17,7 @@ initialState = State
   }
 
 main :: IO ()
-main = installEventHandler "Proyecto II Lenguajes" handleEvents initialState Blank 25
+main = installEventHandler "Suanfonson" handleEvents initialState Blank 25
 
 handleEvents :: State -> Input -> (State, [Output])
 handleEvents s e = Events.handleEvents s e

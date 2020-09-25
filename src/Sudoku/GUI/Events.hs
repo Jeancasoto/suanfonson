@@ -44,8 +44,7 @@ handleEvents state@(State {stage="solver",selectedCell=sc,sudoku=su,..}) (Prompt
     c = if null n then '.' else head n
     (row, column) = fromJust sc
     su' | c /= '.' &&
-          (isNothing sc ||
-          not (isAllowed su row column c))
+          (isNothing sc)
         = su
         | isJust sc
         = (update (su) (fst $ fromJust sc) (snd $ fromJust sc)) c

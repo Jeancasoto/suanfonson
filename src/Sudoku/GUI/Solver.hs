@@ -26,5 +26,5 @@ draw s e = Pictures
 
 drawBackground :: Picture
 drawBackground = Pictures
-  [ Translate 0 0 $ Color (makeColor 0.1 0.1 0.1 1) $ rectangleSolid 800 800
+  [ Translate 0 0 $ Color (makeColor 1.1 1.1 1.1 1) $ rectangleSolid 800 800
   ]

@@ -8,10 +8,18 @@ import qualified Sudoku.GUI.Events as Events
 
 initialState :: State
 initialState = State
-  { stage = "menu"
-  , dim = 0
+  { stage = "solver"
+  , dim = 9
   , mousePressed = False
-  , sudoku = ["."]
+  , sudoku = [ "........."
+  , "........."
+  , "........."
+  , "........."
+  , "........."
+  , "........."
+  , "........."
+  , "........."
+  , "........." ]
   , selectedCell = Nothing
   , invalidCell = Nothing
   }

@@ -12,14 +12,14 @@ size :: Float
 size = 540.0
 
 cellColor :: Color
-cellColor = makeColor 1 1 1 0.5
+cellColor = makeColor 0 0 0 1
 
 gridLineWidth :: Float
 gridLineWidth = 2.0
 
 gridLineColor :: State -> Color
-gridLineColor s | isValid (sudoku s) = Gfx.dim white
-                | otherwise = white
+gridLineColor s | isValid (sudoku s) = Gfx.dim black
+                | otherwise = black
 
 draw :: State -> Input -> Picture
 draw s e = Translate (-100) 0 $ Pictures
@@ -42,9 +42,9 @@ drawCell (State {dim=d}) (MouseMotion (mx, my)) i j
     my > y - (size / 2) &&
     my < y - (size / 2) + cellSize
   = Translate x y $ Pictures
-    [ Color white $ rectangleWire (cellSize) (cellSize)
+    [ Color black $ rectangleWire (cellSize) (cellSize)
     , Color cellColor $ rectangleWire cellSize cellSize
-    , Translate (-35 * scl) (-50 * scl) $ Color white $ Scale scl scl $ Text ""
+    , Translate (-35 * scl) (-50 * scl) $ Color black $ Scale scl scl $ Text ""
     ]
   where
     [i', j', dim']  = map fromIntegral [i, j, d]
@@ -56,10 +56,10 @@ drawCell (State {dim=d}) (MouseMotion (mx, my)) i j
 drawCell (State {invalidCell=sc,dim=d,sudoku=su}) _ i j
   = Translate (i' * cellSize) (j' * cellSize) $ Pictures $ [] ++
     (if isJust sc && fromJust sc == (d - j - 1, i) then
-      [ Translate (-35 * scl) (-50 * scl) $ Color (greyN 0.75) $ Scale scl scl $ Text txt ]
+      [ Translate (-35 * scl) (-50 * scl) $ Color (black) $ Scale scl scl $ Text txt ]
     else
       [ Color cellColor $ rectangleWire cellSize cellSize
-      , Translate (-35 * scl) (-50 * scl) $ Color (greyN 0.75) $ Scale scl scl $ Text txt
+      , Translate (-35 * scl) (-50 * scl) $ Color (black) $ Scale scl scl $ Text txt
       ]
     )
   where
